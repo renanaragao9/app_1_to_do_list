@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'register_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  RegisterScreen({super.key});
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +29,19 @@ class LoginScreen extends StatelessWidget {
                     FlutterLogo(size: 76),
                     SizedBox(height: 16),
                     TextField(
+                      controller: _nameController,
+                      decoration: InputDecoration(
+                        hintText: 'Nome'
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    TextField(
                       controller: _emailController,
                       decoration: InputDecoration(
                         hintText: 'Email'
                       ),
                     ),
-                    
                     SizedBox(height: 16),
-                    
                     TextField(
                       obscureText: true,
                       controller: _passwordController,
@@ -43,38 +49,27 @@ class LoginScreen extends StatelessWidget {
                         hintText: 'Senha'
                       ),
                     ),
-                    
                     SizedBox(height: 16),
-                    
-                    ElevatedButton(
-                      onPressed: () {}, 
-                      child: Text('Entrar')
+                    TextField(
+                      obscureText: true,
+                      controller: _confirmPasswordController,
+                      decoration: InputDecoration(
+                        hintText: 'Confirmar Senha'
+                      ),
                     ),
-                    
                     SizedBox(height: 16),
-                    
                     ElevatedButton(
-                      onPressed: () {}, 
-                      child: Text('Entrar com Google')
-                    ),
-                    
-                    TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context, 
-                          MaterialPageRoute(
-                            builder: (context) => RegisterScreen()
-                          )
-                        );
-                      }, 
-                      child: Text('Ainda não tenho uma conta, criar uma conta')
+                        if (_passwordController.text == _confirmPasswordController.text) {}
+                      }, child: Text('Cadastrar')
                     ),
+                    SizedBox(height: 16),
                   ],
                 ),
-              ),
+              )
             ],
           ),
-        ),
+        )
       ),
     );
   }
